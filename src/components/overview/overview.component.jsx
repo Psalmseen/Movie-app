@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import results from "../../result";
 import Card from "../card/card.component";
 import  getCollections from "../../utils/collection.utils";
+import Spinner from "../spinner/spinner.component";
 
 const Overview = () => {
   const [results, setResults] = useState([]);
@@ -24,7 +25,7 @@ const Overview = () => {
   
 
   return (
-    isFetching ? <div>FETCHING DATA PLEASE WAIT</div> :
+    isFetching ? <Spinner />:
     <div className="overview">
       {results.map((result) => (
         <Card key="result.id" {...result} />

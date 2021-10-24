@@ -20,7 +20,7 @@ function App() {
         <Route path="/favourites">
           <FavouritePage />
         </Route>
-        <Route path="/sign-in">
+      <Route path="/sign-in">
           <SigInPage />
         </Route>
         <Route path="/video">
