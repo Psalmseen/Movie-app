@@ -7,8 +7,8 @@ const Overview = ({ results }) => {
     <div className="overview">
       {results.map((result) => (
         <Card key={result.id} {...result} />
-        ))}
-        <PageNavigation/>
+      ))}
+      <PageNavigation />
     </div>
   );
 };
@@ -18,11 +18,9 @@ export default Overview;
 /******************************************************************************
  *
  *
+ *              LINK WITH FIRESTORE TO CREATE LOGIN
  *
  *
  *              CREATE A FAVOURITE PAGE  COMPONENT
- *
- *
- *              MAKE THE OVERVIEW COMPONENT HAVE PAGES
  *
  * *************************************************************************** */

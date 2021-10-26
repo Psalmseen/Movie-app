@@ -22,6 +22,12 @@ const Footer = () => (
         </span>
         github
       </a>
+      <a href="mailto:samsonoyebamiji02@gmail.com" className="footer__link">
+        <span>
+          <i className="far fa-envelope"></i>
+        </span>
+        mail
+      </a>
       <a href="tel:+2348102545216" className="footer__link">
         <span>
           <i className="fas fa-phone"></i>
