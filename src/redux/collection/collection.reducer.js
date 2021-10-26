@@ -1,13 +1,15 @@
+import collectionActionTypes from "./collection.types"
+
 const INITIAL_STATE = {
     results:[]
 }
 
-const collectionReducer = (state = INITIAL_STATE, { type, payload } ) => {
-    switch (type) {
-        case 'FETCH_COLLECTION_ARRAY':
+const collectionReducer = (state = INITIAL_STATE, action ) => {
+    switch (action.type) {
+        case collectionActionTypes.FETCH_COLLECTION_DATA:
             return {
                 ...state,
-                results:payload
+                results: action.payload
             }
         default:
             return state

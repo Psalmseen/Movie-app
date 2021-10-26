@@ -1,5 +1,5 @@
 import React from "react";
-import Overview from "../../components/overview/overview.component";
+import { default as Overview} from "../../components/overview/overview.container";
 
 const HomePage = () => {
   return (

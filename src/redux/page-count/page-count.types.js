@@ -1,0 +1,4 @@
+export const pageCountTypes = {
+    INCREASE_PAGE_COUNT: 'INCREASE_PAGE_COUNT',
+    DECREASE_PAGE_COUNT: 'DECREASE_PAGE_COUNT'
+}
