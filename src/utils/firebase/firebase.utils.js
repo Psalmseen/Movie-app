@@ -1,7 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+// import { getAnalytics } from "firebase/analytics";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,32 +27,69 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const app =
+initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 const auth = getAuth();
-//     (email, password, displayName) =>
-//   createUserWithEmailAndPassword(auth, email, password).then(
-//     (userCredentials) => {
-//       const { user } = userCredentials;
-//       updateProfile(auth.currentUser, {
-//         displayName: [displayName]
-//       }).then(() => {
-//           console.log('displayName was set')
-//       });
-//       console.log(user);
-//     }
-//     );
-  
-    const createMe = async ({ email, password, displayName }) => {
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-    const { user } = userCredentials
-    console.log('just created user', user)
-    await updateProfile(auth.currentUser, {
-        displayName:[displayName]
-    })
-        console.log('userNow', user)
+
+const createUser = async ({ email, password }) => {
+  await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const emailSignIn = async ({ email, password }) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const checkUserSession = async () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log(user);
+    } else {
+      alert("so sad");
     }
+  });
+};
 
-export default createMe;
+export const signUserOut = async () => {
+  await signOut(auth);
+};
 
+/*
+
+    ************************ METHOD 1*******************
+   
+(email, password, displayName) =>
+createUserWithEmailAndPassword(auth, email, password).then(
+(userCredentials) => {
+  const { user } = userCredentials;
+  updateProfile(auth.currentUser, {
+    displayName: [displayName]
+  }).then(() => {
+      console.log('displayName was set')
+  });
+  console.log(user);
+}
+);
+    ******************  METHOD 2 **************** 
+
+const createUser = async ({ email, password, displayName }) => {
+  const userCredentials = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+
+  const { user } = userCredentials;
+
+  console.log("just created user", user);
+  await updateProfile(auth.currentUser, {
+    displayName: [displayName],
+  });
+};
+*/
+export default createUser;

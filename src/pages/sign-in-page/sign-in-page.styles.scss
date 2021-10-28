@@ -1,5 +1,7 @@
 .sign-in-page {
   display: flex;
-  flex-wrap: reverse;
-
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 83vh;
 }

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+
 import TextInput from "../text-input/text-input.component";
+import CustomButton from "../custom-button/custom-button.component";
+import createUser from "../../utils/firebase/firebase.utils";
 
 const SignUp = () => {
   const [userCredentials, setUserCredentials] = useState({
@@ -11,27 +14,38 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setUserCredentials({ ...userCredentials, [name]: [value] });
+    
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
-
+  
+  const { email, password, confirmPassword, displayName } = userCredentials;
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUserCredentials({
-      email: "",
-      password: "",
-      confirmPassword: "",
-      displayName: "",
-    });
+    if (password !== confirmPassword || password.length < 1) {
+      alert(`password doesn't match pas ${password} !== ${confirmPassword}`);
+      setUserCredentials({
+        ...userCredentials,
+        password: "",
+        confirmPassword: "",
+      });
+    } else {
+      createUser({ email, password });
+      setUserCredentials({
+        email: "",
+        password: "",
+        confirmPassword: "",
+        displayName: "",
+      });
+    }
   };
-  const { email, password, confirmPassword, displayName } = userCredentials;
   return (
     <form action="#" onSubmit={handleSubmit} className="sign-up">
       <h3 className="title"> Sign up </h3>
       <TextInput
         value={email}
+        type='email'
         name="email"
-        id="email"
+        id="email-up"
         label="Email:"
         handleChange={handleChange}
         placeholder="enter your email address"
@@ -48,7 +62,7 @@ const SignUp = () => {
       <TextInput
         value={confirmPassword}
         name="confirmPassword"
-        type="password"
+        type="password-up"
         id="confirmPassword"
         label="Confirm Password:"
         handleChange={handleChange}
@@ -61,8 +75,8 @@ const SignUp = () => {
         label="Display Name:"
         handleChange={handleChange}
         placeholder="Choose a display name"
-        />
-      <button className='sign-up-button'> Sign up</button>
+      />
+      <CustomButton className="sign-up-button"> Sign up</CustomButton>
     </form>
   );
 };

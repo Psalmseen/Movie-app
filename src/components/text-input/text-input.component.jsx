@@ -11,7 +11,7 @@ const FormInput = ({
   handleClick,
   className,
 }) => (
-  <div>
+  <div className='form-input'>
     {label ? <label for={id}> {label}</label> : ""}
     <input
       id={id}

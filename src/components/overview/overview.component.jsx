@@ -1,10 +1,12 @@
-import React from "react";
-import createMe from "../../utils/firebase/firebase.utils";
+import React, { useEffect } from "react";
 import Card from "../card/card.component";
 import PageNavigation from "../page-navigation/page-navigation.component";
 
 const Overview = ({ results }) => {
-  
+  useEffect(() => {
+    console.log("fired from overview");
+  }, []);
+
   return (
     <div className="overview">
       {results.map((result) => (
