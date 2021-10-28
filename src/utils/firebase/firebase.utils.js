@@ -6,7 +6,6 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  updateProfile,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 
