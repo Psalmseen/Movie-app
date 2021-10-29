@@ -1,5 +1,8 @@
-import { createStructuredSelector } from "reselect";
+import { createSelector } from "reselect";
 
-const user = (state) => state.user;
+const selectUser = (state) => state.user;
 
-export const currentUser = createStructuredSelector(user, (user) => user.currentUser);
+export const selectCurrentUser = createSelector(
+  selectUser,
+  (user) => user.currentUser
+);

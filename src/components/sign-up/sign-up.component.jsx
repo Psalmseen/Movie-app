@@ -9,7 +9,7 @@ const SignUp = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    displayName: "",
+    displayName: "rr",
   });
 
   const handleChange = (e) => {
@@ -19,17 +19,16 @@ const SignUp = () => {
   };
   
   const { email, password, confirmPassword, displayName } = userCredentials;
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword || password.length < 1) {
-      alert(`password doesn't match pas ${password} !== ${confirmPassword}`);
       setUserCredentials({
         ...userCredentials,
         password: "",
         confirmPassword: "",
       });
     } else {
-      createUser({ email, password });
+      await createUser({ email, password }, { displayName });
       setUserCredentials({
         email: "",
         password: "",
@@ -54,7 +53,7 @@ const SignUp = () => {
         value={password}
         name="password"
         type="password"
-        id="password"
+        id="password-up"
         label="Password:"
         handleChange={handleChange}
         placeholder="enter your password"
@@ -62,7 +61,7 @@ const SignUp = () => {
       <TextInput
         value={confirmPassword}
         name="confirmPassword"
-        type="password-up"
+        type="password"
         id="confirmPassword"
         label="Confirm Password:"
         handleChange={handleChange}

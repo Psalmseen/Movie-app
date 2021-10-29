@@ -1,21 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
-// import { getAnalytics } from "firebase/analytics";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyCNsNn0LGd_KhQb0KtV7S0qlztx31zKdq8",
   authDomain: "movie-app-eb5db.firebaseapp.com",
   projectId: "movie-app-eb5db",
@@ -27,13 +24,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 // const app =
-initializeApp(firebaseConfig);
+initializeApp(config);
+const db = getFirestore();
 // const analytics = getAnalytics(app);
 
-const auth = getAuth();
+// *********************** Auth Related Functions ********************
 
-const createUser = async ({ email, password }) => {
-  await createUserWithEmailAndPassword(auth, email, password);
+//           ********** Sign in with email and password ********
+export const auth = getAuth();
+
+const createUser = async ({ email, password }, additionalData) => {
+  const {user} = await createUserWithEmailAndPassword(auth, email, password);
+   await createUserDocument(user, additionalData);
 };
 
 export const emailSignIn = async ({ email, password }) => {
@@ -44,51 +46,42 @@ export const emailSignIn = async ({ email, password }) => {
   }
 };
 
-export const checkUserSession = async () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log(user);
-    } else {
-      alert("so sad");
-    }
-  });
-};
+//          ************ Sign in with google ****************
 
+const provider = new GoogleAuthProvider();
+
+export const signInWithGoogle = async () => signInWithPopup(auth, provider);
+
+//           ********** Sign out ***************
 export const signUserOut = async () => {
   await signOut(auth);
 };
 
-/*
+// ****************** Firestore Related functions ****************
 
-    ************************ METHOD 1*******************
-   
-(email, password, displayName) =>
-createUserWithEmailAndPassword(auth, email, password).then(
-(userCredentials) => {
-  const { user } = userCredentials;
-  updateProfile(auth.currentUser, {
-    displayName: [displayName]
-  }).then(() => {
-      console.log('displayName was set')
-  });
-  console.log(user);
-}
-);
-    ******************  METHOD 2 **************** 
+export const createUserDocument = async (userAuth, additionalData) => {
+  if (!userAuth) {return};
+  // Adds a user to our firestore
+  const userRef = doc(db, `users`, `${userAuth.uid}`); // get userRef
+  const userSnapshot = await getDoc(userRef); // get snapShot
+  if (!userSnapshot.exists()) {
+    // make sure user is not existing b4 adding
+    const {  email, displayName } = userAuth;
+    const createdAt = new Date();
+    const newUser = {
+      email,
+      createdAt,
+      displayName,
+      ...additionalData
+    }
+    try {
+      await setDoc(userRef, newUser);
+    } catch (error) {
+      console.error("Error creating document", error);
+    }
+  }
 
-const createUser = async ({ email, password, displayName }) => {
-  const userCredentials = await createUserWithEmailAndPassword(
-    auth,
-    email,
-    password
-  );
-
-  const { user } = userCredentials;
-
-  console.log("just created user", user);
-  await updateProfile(auth.currentUser, {
-    displayName: [displayName],
-  });
+  return userRef;
 };
-*/
+
 export default createUser;

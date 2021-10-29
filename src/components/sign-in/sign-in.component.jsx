@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import FormInput from "../text-input/text-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import { emailSignIn, signUserOut } from "../../utils/firebase/firebase.utils";
+import { emailSignIn, signInWithGoogle } from "../../utils/firebase/firebase.utils";
 
 const SignIn = () => {
   const [userCredential, setUserCredentials] = useState({
@@ -24,10 +24,6 @@ const SignIn = () => {
       password: "",
     });
   };
-
-  const handleClick = () => {
-    signUserOut()
-  }
   const { email, password } = userCredential;
   return (
       <form onSubmit={handleSubmit} className="sign-in">
@@ -37,6 +33,7 @@ const SignIn = () => {
         placeholder="Enter email address"
         label="Email"
         id="email-in"
+        reuired
         value={email}
         handleChange={handleChange}
       />
@@ -44,7 +41,9 @@ const SignIn = () => {
         name="password"
         placeholder="Enter your password"
         label="Password"
+        type='password'
         id="password-in"
+        reuired
         value={password}
         handleChange={handleChange}
       />
@@ -53,7 +52,7 @@ const SignIn = () => {
         Sign in
           </CustomButton>
           <span className='or' > or </span>
-      <CustomButton type="button" onClick={handleClick} className="google-sign-in-button">
+      <CustomButton type="button" onClick={signInWithGoogle} className="google-sign-in-button">
         Sign in with google
       </CustomButton>
     </form>

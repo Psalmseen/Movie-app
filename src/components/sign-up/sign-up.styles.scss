@@ -5,6 +5,12 @@
   padding: 2rem 4rem;
   margin: 2rem;
   border-radius: 2rem;
+  border: none;
+  outline: none;
+
+  & * {
+    outline: none;
+  }
   .title {
     color: $primary-color-1;
     text-align: center;

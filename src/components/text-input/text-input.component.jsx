@@ -12,14 +12,14 @@ const FormInput = ({
   className,
 }) => (
   <div className='form-input'>
-    {label ? <label for={id}> {label}</label> : ""}
+    {label ? <label htmlFor={id}> {label}</label> : ""}
     <input
       id={id}
       name={name}
       type={type ? type : "text"}
       placeholder={placeholder}
       value={value}
-      onclick={handleClick}
+      onClick={handleClick}
       onChange={handleChange}
       className={className ? className : ""}
     />
