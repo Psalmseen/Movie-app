@@ -10,6 +10,7 @@ const FormInput = ({
   type,
   handleClick,
   className,
+  ...otherProps
 }) => (
   <div className="form-input">
     <label htmlFor={id}>
@@ -23,6 +24,7 @@ const FormInput = ({
         onClick={handleClick}
         onChange={handleChange}
         className={className ? className : ""}
+        {...otherProps}
       />
     </label>
   </div>

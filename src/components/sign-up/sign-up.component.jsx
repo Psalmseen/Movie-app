@@ -62,6 +62,7 @@ const SignUp = () => {
           label="Email:"
           handleChange={handleChange}
           placeholder="enter your email address"
+          required
         />
         <TextInput
           value={password}
@@ -70,6 +71,7 @@ const SignUp = () => {
           id="password-up"
           label="Password:"
           handleChange={handleChange}
+          required
           placeholder="enter your password"
         />
         <TextInput
@@ -79,6 +81,7 @@ const SignUp = () => {
           id="confirmPassword"
           label="Confirm Password:"
           handleChange={handleChange}
+          required
           placeholder="Confirm your password"
         />
         <TextInput
@@ -88,6 +91,7 @@ const SignUp = () => {
           label="Display Name:"
           handleChange={handleChange}
           placeholder="Choose a display name"
+          required
         />
         <CustomButton className="sign-up-button"> Sign up</CustomButton>
       </form>
