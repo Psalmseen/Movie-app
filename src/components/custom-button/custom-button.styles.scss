@@ -4,29 +4,30 @@
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 2rem;
-  display: block ;
-  margin: 0 auto;
+  font-size: 1rem;
+  display: block;
+  width: $input-width;
+  //height:2.25rem;
   background-color: $primary-color-1;
   color: $grey-light-1;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 5rem;
   box-shadow: 0 0.3rem 0.5rem rgba($primary-color-2, 0.6);
   transition: all 0.2s;
-  
+  margin: 3rem auto 0;
+
   &:hover {
-      box-shadow: 0 0.1rem 0.3rem rgba($primary-color-2, 0.9);
-      transform: scale(0.95) translateY(-1px);
-    }
+    box-shadow: 0 0.1rem 0.3rem rgba($primary-color-2, 0.9);
+    transform: scale(0.95) translateY(-1px);
+  }
 }
 
-.google-sign-in-button{
-    background-color: $primary-color-2;
-    color: $primary-color-1;
-    margin: 3rem auto 0;
-    box-shadow: 0 0.2rem 0.4rem rgba($primary-color-1, 0.6);
+.google-sign-in-button {
+  background-color: $primary-color-2;
+  color: $primary-color-1;
+  box-shadow: 0 0.2rem 0.4rem rgba($primary-color-1, 0.6);
 
-    &:hover {
-        box-shadow:unset;
-    }
+  &:hover {
+    box-shadow: unset;
+  }
 }

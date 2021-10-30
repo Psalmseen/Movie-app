@@ -1,7 +1,21 @@
 .sign-in-page {
   display: flex;
-  flex-wrap: wrap-reverse;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   min-height: 83vh;
+
+  .toggle {
+    display: none;
+  }
+  .container {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 56.3rem;
+    min-height: 34.4rem;
+    margin: 6rem auto;
+    background: transparent;
+    border: 2px solid $primary-color-2;
+    transition: border 1.2s;
+  }
 }
