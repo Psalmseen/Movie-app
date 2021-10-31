@@ -11,8 +11,8 @@ const SignInPage = () => (
       id="toggle-sign-in"
     />
     <div className="container">
-      <SignUp />
       <SignIn />
+      <SignUp />
     </div>
   </div>
 );

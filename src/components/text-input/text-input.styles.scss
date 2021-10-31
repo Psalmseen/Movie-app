@@ -26,6 +26,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     text-align: center;
     background: none;
+    @media screen and (max-width:600px) {
+      padding: 1rem;
+    }
 
     &:focus {
       border-bottom: 2px solid rgba(0, 0, 0, 0.7);

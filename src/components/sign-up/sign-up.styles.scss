@@ -164,3 +164,83 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .sign-in,
+  .sign-up {
+    width: 100%;
+    height: unset;
+  }
+  .sign-in {
+    padding-bottom: 3rem;
+  }
+  .sign-up-container {
+    position: static;
+    padding: 0;
+    width: 100%;
+    transition: all 1.2s ease-in-out;
+
+    .img {
+      position: unset;
+      width: 100%;
+      padding: 3rem 0;
+      font-size: 1.5rem;
+      height: unset;
+
+      .img__btn {
+        font-size: 1rem;
+        margin: 2rem auto 0;
+      }
+
+      .img__text.m--in {
+        position: unset;
+        transform: translate3d(0, -8rem, 0);
+        display: none;
+      }
+      .img__text.m--up {
+        position: unset;
+      }
+    }
+    .sign-up {
+      transform: translateX(0);
+      padding-bottom: 6rem;
+    }
+  }
+}
+
+.sign-in-page {
+  .toggle:checked + .container {
+    @media screen and (max-width: 600px) {
+      .sign-in,
+      .sign-up {
+        height: unset;
+      }
+      .sign-in {
+        transform: translate3d(0, 30rem, 0);
+        height: unset;
+      }
+      .sign-up-container {
+        position: absolute;
+        transform: translateX(0);
+        left:0;
+        height: unset;
+
+        .img {
+          height: unset;
+
+          .img__text.m--in {
+            position: unset;
+            transform: translate3d(0, 0, 0);
+            display: block;
+          }
+          .img__text.m--up {
+            transform: translateX(50rem);
+          }
+        }
+        .sign-up {
+          display: block;
+        }
+      }
+    }
+  }
+}

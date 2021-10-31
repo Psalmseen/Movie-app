@@ -6,6 +6,18 @@
 
   .toggle {
     display: none;
+
+    &:checked + .container {
+      @media screen and (max-width: 600px) {
+        height: 57.6rem;
+      }
+      @media screen and (max-width: 420px) {
+        height: 62rem;
+      }
+      @media screen and (max-width: 310px) {
+        height: 69rem;
+      }
+    }
   }
   .container {
     border-radius: 20px;
@@ -17,5 +29,15 @@
     background: transparent;
     border: 2px solid $primary-color-2;
     transition: border 1.2s;
+
+    @media screen and (max-width: 600px) {
+      display: flex;
+      max-width: calc(100vw - 4rem);
+      flex-direction: column;
+      height: 50rem;
+    }
+    @media screen and (max-width: 310px) {
+      height: 54.2rem;
+    }
   }
 }
