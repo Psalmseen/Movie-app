@@ -31,8 +31,6 @@ function App({setCurrentUser, currentUser}) {
         setCurrentUser(userAuth)
       }
     });
-
-    // return null;
   }, [setCurrentUser]);
   return (
     <div className="App">

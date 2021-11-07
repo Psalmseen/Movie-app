@@ -10,7 +10,13 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyCNsNn0LGd_KhQb0KtV7S0qlztx31zKdq8",
@@ -34,8 +40,8 @@ const db = getFirestore();
 export const auth = getAuth();
 
 const createUser = async ({ email, password }, additionalData) => {
-  const {user} = await createUserWithEmailAndPassword(auth, email, password);
-   await createUserDocument(user, additionalData);
+  const { user } = await createUserWithEmailAndPassword(auth, email, password);
+  await createUserDocument(user, additionalData);
 };
 
 export const emailSignIn = async ({ email, password }) => {
@@ -53,27 +59,33 @@ const provider = new GoogleAuthProvider();
 export const signInWithGoogle = async () => signInWithPopup(auth, provider);
 
 //           ********** Sign out ***************
-export const signUserOut = async () => {
+export const signUserOut = async (id, fav) => {
+  await createUserFavourites(id, fav)
   await signOut(auth);
 };
 
 // ****************** Firestore Related functions ****************
 
+//          ******** Creating new user *********
+
 export const createUserDocument = async (userAuth, additionalData) => {
-  if (!userAuth) {return};
+  if (!userAuth) {
+    return;
+  }
   // Adds a user to our firestore
   const userRef = doc(db, `users`, `${userAuth.uid}`); // get userRef
   const userSnapshot = await getDoc(userRef); // get snapShot
   if (!userSnapshot.exists()) {
     // make sure user is not existing b4 adding
-    const {  email, displayName } = userAuth;
+    const { email, displayName } = userAuth;
     const createdAt = new Date();
     const newUser = {
       email,
       createdAt,
       displayName,
-      ...additionalData
-    }
+      ...additionalData,
+      fav: [],
+    };
     try {
       await setDoc(userRef, newUser);
     } catch (error) {
@@ -82,6 +94,12 @@ export const createUserDocument = async (userAuth, additionalData) => {
   }
 
   return userRef;
+};
+
+//      ********** Creating UserFav array *********
+export const createUserFavourites = async (id, fav) => {
+  const userRef = doc(db, `users`, `${id}`);
+  await updateDoc(userRef, { fav });
 };
 
 export default createUser;

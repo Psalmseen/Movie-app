@@ -2,18 +2,35 @@ import React, { useEffect, useState } from "react";
 
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { fetchCollectionData } from "../../redux/collection/collection.actions";
-import { selectCollectionResult } from "../../redux/collection/collection.selectors";
+import {
+  fetchCollectionData,
+  updateFavouritedItems,
+} from "../../redux/collection/collection.actions";
+import {
+  selectCollectionData,
+  selectCollectionResult,
+} from "../../redux/collection/collection.selectors";
 import getCollections from "../../utils/collection.utils";
+//{ mergeArrays } from "../../utils/collection.utils";
 import Overview from "./overview.component";
 import Spinner from "../spinner/spinner.component";
 import { selectPageCountValue } from "../../redux/page-count/page-count.selectors";
+import { selectFavourites } from "../../redux/favourite/favourites.selector";
 
-const OverviewContainer = ({ fetchCollectionData, results, value}) => {
+const OverviewContainer = ({
+  fetchCollectionData,
+
+  value,
+  data,
+}) => {
   const [isFetching, setIsFetching] = useState(false);
 
-  const url =
-    `https://api.themoviedb.org/3/discover/movie?api_key=89cbd8f9a2829355783549b21d6e1769&language=en-US&sort_by=release_date.desc&include_adult=true&include_video=true&page=${value}&primary_release_date.gte=2010&release_date.gte=2010&vote_count.gte=6&vote_average.gte=6&with_watch_monetization_types=flatrate`;
+  // props that has to do with the TODO below
+  // updateFavouritedItems,
+  // results,
+  // favourites,
+
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=89cbd8f9a2829355783549b21d6e1769&language=en-US&sort_by=release_date.desc&include_adult=true&include_video=true&page=${value}&primary_release_date.gte=2010&release_date.gte=2010&vote_count.gte=6&vote_average.gte=6&with_watch_monetization_types=flatrate`;
 
   useEffect(() => {
     const fetchAsync = async (url) => {
@@ -31,15 +48,28 @@ const OverviewContainer = ({ fetchCollectionData, results, value}) => {
     fetchAsync(url);
   }, [fetchCollectionData, url]);
 
-  return isFetching ? <Spinner /> : <Overview results={results} />;
+  // TODO : Work on this funtionality so as to see faourited videos on the homepage
+  // useEffect(() => {
+  //   const collectionResult = mergeArrays(data, favourites);
+  // updateFavouritedItems(collectionResult);
+  // },[favourites,data, updateFavouritedItems]);
+
+  //
+
+  return isFetching ? <Spinner /> : <Overview results={data} />;
 };
+
 const mapStateToProps = createStructuredSelector({
-    results: selectCollectionResult,
-    value:selectPageCountValue
+  results: selectCollectionResult,
+  value: selectPageCountValue,
+  data: selectCollectionData,
+  favourites: selectFavourites,
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCollectionData: (collectionData) =>
     dispatch(fetchCollectionData(collectionData)),
+  updateFavouritedItems: (collectionResult) =>
+    dispatch(updateFavouritedItems(collectionResult)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OverviewContainer);

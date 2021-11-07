@@ -1,0 +1,31 @@
+.empty-page {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  
+  &-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 0 4rem;
+  }
+
+  &__logo-container {
+    width: 40vmin;
+    height: 40vmin;
+
+    .empty-page__logo{
+        height: 100%;
+        width: 100%;
+    }
+  }
+
+  &__text{
+      font-size: 3rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+  }
+}

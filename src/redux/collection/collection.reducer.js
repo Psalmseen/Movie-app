@@ -1,19 +1,25 @@
-import collectionActionTypes from "./collection.types"
+import collectionActionTypes from "./collection.types";
 
 const INITIAL_STATE = {
-    results:[]
-}
+  results: [],
+  data: [],
+};
 
-const collectionReducer = (state = INITIAL_STATE, action ) => {
-    switch (action.type) {
-        case collectionActionTypes.FETCH_COLLECTION_DATA:
-            return {
-                ...state,
-                results: action.payload
-            }
-        default:
-            return state
-    }
-}
+const collectionReducer = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
+    case collectionActionTypes.FETCH_COLLECTION_DATA:
+      return {
+        ...state,
+        data: payload,
+      };
+    case collectionActionTypes.UPDATE_FAVOURITED_ITEMS:
+      return {
+        ...state,
+        results: payload,
+      };
+    default:
+      return state;
+  }
+};
 
-export default collectionReducer
+export default collectionReducer;

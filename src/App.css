@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .App-logo {
@@ -37,28 +41,28 @@
   }
 }
 
-@media screen and (max-width:1060px) {
-  html{
+@media screen and (max-width: 1060px) {
+  html {
     font-size: 12px;
   }
 }
-@media screen and (max-width:700px) {
-  html{
+@media screen and (max-width: 700px) {
+  html {
     font-size: 11px;
   }
 }
-@media screen and (max-width:650px) {
-  html{
+@media screen and (max-width: 650px) {
+  html {
     font-size: 10.5px;
   }
 }
-@media screen and (max-width:600px) {
-  html{
+@media screen and (max-width: 600px) {
+  html {
     font-size: 10px;
   }
 }
-@media screen and (max-width:420px) {
-  html{
+@media screen and (max-width: 420px) {
+  html {
     font-size: 8px;
   }
 }
