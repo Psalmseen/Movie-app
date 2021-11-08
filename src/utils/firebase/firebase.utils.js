@@ -18,6 +18,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
+import { updateFavouriteItems } from "../../redux/favourite/favourites.action";
+
 const config = {
   apiKey: "AIzaSyCNsNn0LGd_KhQb0KtV7S0qlztx31zKdq8",
   authDomain: "movie-app-eb5db.firebaseapp.com",
@@ -28,11 +30,8 @@ const config = {
   measurementId: "G-839ZWEK6Q8",
 };
 
-// Initialize Firebase
-// const app =
 initializeApp(config);
 const db = getFirestore();
-// const analytics = getAnalytics(app);
 
 // *********************** Auth Related Functions ********************
 
@@ -98,8 +97,16 @@ export const createUserDocument = async (userAuth, additionalData) => {
 
 //      ********** Creating UserFav array *********
 export const createUserFavourites = async (id, fav) => {
-  const userRef = doc(db, `users`, `${id}`);
-  await updateDoc(userRef, { fav });
+  const userFavRef = doc(db, `users`, `${id}`);
+  await updateDoc(userFavRef, { fav });
 };
 
 export default createUser;
+
+// ************* Retriving UserFav Array *****
+
+export const getUserFavourites = async (id) => {
+  const userFavRef = doc(db, 'users', `${id}`)
+  const userFavSnapshot = await getDoc(userFavRef)
+  return updateFavouriteItems(userFavSnapshot.data().fav)
+}

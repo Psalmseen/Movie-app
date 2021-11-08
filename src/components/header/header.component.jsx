@@ -3,12 +3,12 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../redux/user/user.selector";
+import { selectFavourites } from '../../redux/favourite/favourites.selector'
 import {signUserOut} from '../../utils/firebase/firebase.utils'
 
-const Header = ({ currentUser }) => {
-  const favi = ['now', 'this', 'should', 'work','too'] // This shoud b the favourite array of the current user
+const Header = ({ currentUser, favourites }) => {
   const handleSignOut = () => {
-    signUserOut(currentUser.id ,favi)
+    signUserOut(currentUser.id ,favourites)
   }
   return(
   <div className="header">
@@ -25,7 +25,8 @@ const Header = ({ currentUser }) => {
 )};
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  favourites: selectFavourites
 })
 
 export default connect(mapStateToProps)(withRouter(Header));

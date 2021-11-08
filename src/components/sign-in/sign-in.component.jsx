@@ -36,7 +36,7 @@ const SignIn = () => {
         placeholder="Enter email address"
         label="Email"
         id="email-in"
-        reuired
+        required
         value={email}
         handleChange={handleChange}
       />
@@ -46,7 +46,7 @@ const SignIn = () => {
         label="Password"
         type="password"
         id="password-in"
-        reuired
+        required
         value={password}
         handleChange={handleChange}
       />
