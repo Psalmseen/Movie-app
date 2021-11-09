@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import HomePage from "./pages/home-page/home-page.component";
 import FavouritePage from "./pages/favourite-page/favourite-page.component";
 import SigInPage from "./pages/sign-in-page/sign-in-page.component";
-import VideoPage from "./pages/video-page/video-page.component";
+import {default as VideoPage} from "./pages/video-page/video-page.container";
 import Header from "./components/header/header.component";
 import Footer from "./components/footer/footer.component";
 import {
@@ -37,7 +37,7 @@ function App({ setCurrentUser, currentUser, dispatch }) {
         setCurrentUser(userAuth);
       }
     });
-  }, [setCurrentUser,dispatch]);
+  }, [setCurrentUser, dispatch]);
   return (
     <div className="App">
       <Header />
@@ -51,7 +51,7 @@ function App({ setCurrentUser, currentUser, dispatch }) {
         <Route path="/sign-in">
           {currentUser ? <Redirect to="/" /> : <SigInPage />}
         </Route>
-        <Route path="/video">
+        <Route path="/videos/:id">
           <VideoPage />
         </Route>
       </Switch>
@@ -65,7 +65,7 @@ const mapStateToProps = createStructuredSelector({
 });
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-  dispatch: (action) => dispatch(action) 
+  dispatch: (action) => dispatch(action),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

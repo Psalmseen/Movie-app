@@ -1,0 +1,57 @@
+.video-page {
+  display: flex;
+  padding: 2rem 4rem;
+
+  .backdrop__wrapper {
+    justify-self: center;
+    align-self: center;
+
+    .backdrop {
+      border-radius: 1rem;
+      max-width: 90vw;
+      max-height: 80vh;
+      margin-right: 2rem;
+      border: 1px solid $primary-color-1;
+    }
+  }
+
+  &__container {
+    font-size: 1.5rem;
+    text-align: justify;
+    span {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    p {
+      margin-top: 1.1rem;
+    }
+    .video-page {
+      &__title {
+        text-transform: uppercase;
+        text-align: center;
+
+        i{
+            font-size: .6em;
+            display: block;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .backdrop__wrapper{
+        .backdrop{
+            margin-right: 0;
+        }
+    }
+    .video-page {
+        &__title {
+            margin-top: 3rem;
+        }
+    }
+      
+  }
+}
