@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../card/card.component";
+import PageList from "../page-list/page-list.component";
 import PageNavigation from "../page-navigation/page-navigation.component";
 
 const Overview = ({ results }) => {
@@ -10,7 +11,8 @@ const Overview = ({ results }) => {
       {results.map((result) => (
         <Card key={result.id} result={result} />
       ))}
-      <PageNavigation />
+        <PageNavigation />
+        <PageList/>
     </div>
     </div>
   );

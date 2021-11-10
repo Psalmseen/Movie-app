@@ -1,0 +1,25 @@
+.page-list {
+  display: flex;
+  grid-column: 2 / -2;
+  font-size: 1.3em;
+  align-items: center;
+  & > * {
+    flex: 1 1;
+    cursor: pointer;
+  }
+  .back,
+  .front {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .even {
+    background: rgba($primary-color-2, 0.6);
+    border-radius: 2px;
+  }
+  @media screen and (max-width: 810px) {
+    grid-column: 1 /-1;
+  }
+  @media screen and (max-width: 320px) {
+      flex-wrap: wrap;
+  }
+}

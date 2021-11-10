@@ -7,6 +7,41 @@
     background-size: cover;
     border: 1px solid rgba($primary-color-1, 0.9);
     box-shadow: 0.3rem 0.3rem 0.5rem rgba($primary-color-1, 0.2);
+    position: relative;
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f004";
+    animation: like 1s infinite;
+    color: red;
+    font-size: 3rem;
+  }
+}
+@keyframes like {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
   }
 }
 

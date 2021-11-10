@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
@@ -10,17 +10,28 @@ const Card = ({ result, toggleFavourite, history }) => {
     poster_path,
     id,
   } = result;
+
+  const [liked, setLiked] = useState('')
   const singleClick = () => {
     history.push(`/videos/${id}`);
   };
-  const doubleClick = () => toggleFavourite(result);
+
+  const doubleClick = () => {
+    setLiked('icon')
+    toggleFavourite(result)
+    setTimeout(() => {
+      setLiked('')
+    },1000)
+  };
   const clickAction = useSingleAndDoubleClick(singleClick, doubleClick);
   return (
     <div onClick={clickAction} className="card">
       <div
         className="card__image"
         style={{ backgroundImage: `url(${poster_path})` }}
-      ></div>
+      >
+        <i className={liked}></i>
+      </div>
      
     </div>
   );

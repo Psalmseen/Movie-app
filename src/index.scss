@@ -6,20 +6,21 @@
 /************************************************************************************
                                 COMPONENTS
 *************************************************************************************/
-@import "./components/header/header.styles.scss";
-@import "./components/footer/footer.styles.scss";
 @import "./components/card/card.styles.scss";
+@import "./components/custom-button/custom-button.styles.scss";
+@import "./components/footer/footer.styles.scss";
+@import "./components/header/header.styles.scss";
 @import "./components/overview/overview.styles.scss";
 @import "./components/spinner/spinner.styles.scss";
+@import "./components/page-list/page-list.styles.scss";
 @import "./components/page-navigation/page-navigation.styles.scss";
 @import "./components/sign-up/sign-up.styles.scss";
-@import "./components/custom-button/custom-button.styles.scss";
 @import "./components/text-input/text-input.styles.scss";
 
 /************************************************************************************
                                      PAGES
 *************************************************************************************/
+@import "./pages/empty-page/empty-page.styles.scss";
 @import "./pages/home-page/home-page.styles.scss";
 @import "./pages/sign-in-page/sign-in-page.styles.scss";
-@import "./pages/empty-page/empty-page.styles.scss";
 @import "./pages/video-page/video-page.styles.scss";
