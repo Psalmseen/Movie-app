@@ -6,7 +6,7 @@
 
 .header {
   display: flex;
-  padding: 0 2rem;
+  padding: 0;
   justify-content: space-between;
   align-items: center;
   background-color: $grey-light-1;
@@ -20,6 +20,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     font-family: "Bungee Shade", cursive;
+    line-height: 1;
     
   }
 
@@ -29,12 +30,13 @@
     text-transform: uppercase;
 
     a {
-      margin: 2rem;
+      margin:  .5rem 2rem ;
       display: inline-block;
       background-color: $primary-color-1;
       color: $grey-light-1;
       padding: 0.5rem 1.5rem;
-      border-radius: 5rem;
+      font-size: 1rem;
+      border-radius: 5px;
       box-shadow: 0 0.3rem 0.5rem rgba($primary-color-2, 0.6);
       transition: all 0.2s;
 

@@ -2,11 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   background-color: $primary-color-1;
-  background-image: linear-gradient(
-    40deg,
-    $primary-color-2 0 40%,
-    $primary-color-1 40%
-  );
   padding: 0rem 2rem;
   text-transform: uppercase;
   font-size: 1.8;
@@ -27,11 +22,10 @@
   nav {
     flex-grow: 1;
     display: flex;
-
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
+    padding: .5rem 0;
 
     .footer__link {
       display: flex;
@@ -42,8 +36,9 @@
       font-size: 0.8rem;
 
       i {
-        font-size: 2rem;
-        color: $primary-color-2;
+        font-size: 1.8rem;
+        color: $primary-color-1-light;
+        opacity: .8;
       }
     }
   }

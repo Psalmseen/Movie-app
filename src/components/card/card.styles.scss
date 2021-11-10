@@ -1,5 +1,6 @@
 .card {
   position: relative;
+  cursor: pointer;
   .card__image {
     width: 15rem;
     height: 20rem;
@@ -7,7 +8,13 @@
     background-size: cover;
     border: 1px solid rgba($primary-color-1, 0.9);
     box-shadow: 0.3rem 0.3rem 0.5rem rgba($primary-color-1, 0.2);
+    transition: all .2s;
     position: relative;
+
+    &:hover{
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: unset;
+    }
   }
   .icon {
     position: absolute;
@@ -29,7 +36,7 @@
     font-weight: 900;
     content: "\f004";
     animation: like 1s infinite;
-    color: red;
+    color: $color-heart;
     font-size: 3rem;
   }
 }
