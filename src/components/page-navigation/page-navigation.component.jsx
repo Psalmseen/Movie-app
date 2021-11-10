@@ -13,11 +13,17 @@ const PageNavigation = ({
   value,
 }) => (
   <div className="page-navigation">
-    {value > 1 ? (
-      <div onClick={decreamentPageCount} className="arrows">prev</div>
-    ) : null}
+    {value > 1 && (
+      <div onClick={decreamentPageCount} className="arrows">
+        prev
+      </div>
+    )}
     <p className="text">{value} </p>
-    <div onClick={increamentPageCount} className="arrows">next</div>
+    {value < 500 && (
+      <div onClick={increamentPageCount} className="arrows">
+        next
+      </div>
+    )}
   </div>
 );
 const mapStateToProps = createStructuredSelector({

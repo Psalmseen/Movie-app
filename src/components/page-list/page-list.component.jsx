@@ -16,7 +16,7 @@ const PageList = ({ pageList, decreasePageList, increasePageList }) => {
       {pageList.map((el) => (
         <PageListItem num={el} />
       ))}
-      <p onClick={increasePageList} className="front"> &#8594; </p>
+      {pageList[9] !== 500 && <p onClick={increasePageList} className="front"> &#8594; </p>}
     </div>
   );
 };
