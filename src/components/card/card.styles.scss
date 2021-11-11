@@ -2,20 +2,26 @@
   position: relative;
   cursor: pointer;
   .card__image {
-    width: 15rem;
-    height: 20rem;
-    border-radius: 1rem;
+    width: 100%;
+    height: 22.4rem;
+    border-radius: 3px;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     border: 1px solid rgba($primary-color-1, 0.9);
     box-shadow: 0.3rem 0.3rem 0.5rem rgba($primary-color-1, 0.2);
-    transition: all .2s;
+    transition: all 0.2s;
     position: relative;
 
-    &:hover{
+    @media screen and (max-width: 600px) {
+      height: 32rem;
+    }
+
+    &:hover {
       transform: scale(1.05) translateY(-2px);
       box-shadow: unset;
     }
-  }
+  
   .icon {
     position: absolute;
     top: 0;
@@ -39,6 +45,20 @@
     color: $color-heart;
     font-size: 3rem;
   }
+
+  .card__img-rating{
+    background: rgba($primary-color-1, 0.5);
+    color: $primary-color-2;
+    font-size: 1.2rem;
+    padding: .5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 .5rem 0;
+
+  }
+}
 }
 @keyframes like {
   0% {

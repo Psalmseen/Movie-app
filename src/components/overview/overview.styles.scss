@@ -6,4 +6,9 @@
     justify-content:center;
     margin-bottom: auto;
     flex-grow: 1;
+    
+    @media screen and (max-width: 600px) {
+        grid-template-columns: repeat(auto-fit, 20rem );
+        
+    }
 }

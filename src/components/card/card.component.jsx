@@ -9,6 +9,7 @@ const Card = ({ result, toggleFavourite, history }) => {
   const {
     poster_path,
     id,
+    vote_average
   } = result;
 
   const [liked, setLiked] = useState('')
@@ -30,6 +31,7 @@ const Card = ({ result, toggleFavourite, history }) => {
         className="card__image"
         style={{ backgroundImage: `url(${poster_path})` }}
       >
+        <span className="card__img-rating"> { vote_average}</span>
         <i className={liked}></i>
       </div>
      
