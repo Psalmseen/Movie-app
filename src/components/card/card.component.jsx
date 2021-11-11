@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
@@ -6,23 +6,19 @@ import { toggleItemFavourite } from "../../redux/favourite/favourites.action";
 import { useSingleAndDoubleClick } from "../../utils/custom-hooks/custom-hooks";
 
 const Card = ({ result, toggleFavourite, history }) => {
-  const {
-    poster_path,
-    id,
-    vote_average
-  } = result;
+  const { poster_path, id, vote_average } = result;
 
-  const [liked, setLiked] = useState('')
+  const [liked, setLiked] = useState("");
   const singleClick = () => {
     history.push(`/videos/${id}`);
   };
 
   const doubleClick = () => {
-    setLiked('icon')
-    toggleFavourite(result)
+    setLiked("icon");
+    toggleFavourite(result);
     setTimeout(() => {
-      setLiked('')
-    },1000)
+      setLiked("");
+    }, 1000);
   };
   const clickAction = useSingleAndDoubleClick(singleClick, doubleClick);
   return (
@@ -31,10 +27,9 @@ const Card = ({ result, toggleFavourite, history }) => {
         className="card__image"
         style={{ backgroundImage: `url(${poster_path})` }}
       >
-        <span className="card__img-rating"> { vote_average}</span>
         <i className={liked}></i>
       </div>
-     
+      <span className="card__img-rating"> {vote_average}</span>
     </div>
   );
 };
