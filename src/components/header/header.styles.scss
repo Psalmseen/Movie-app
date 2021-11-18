@@ -21,7 +21,6 @@
     letter-spacing: 1px;
     font-family: "Bungee Shade", cursive;
     line-height: 1;
-    
   }
 
   .nav {
@@ -30,10 +29,10 @@
     text-transform: uppercase;
 
     a {
-      margin:  .5rem 2rem ;
+      margin: 0.5rem 2rem;
       display: inline-block;
-      background-color: $primary-color-1;
-      color: $grey-light-1;
+      border: 1px solid $primary-color-1;
+      color: $primary-color-1;
       padding: 0.5rem 1.5rem;
       font-size: 1rem;
       border-radius: 5px;
@@ -51,7 +50,7 @@
     text-decoration: none;
     color: inherit;
   }
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 800px) {
     align-items: center;
     justify-content: center;
   }
